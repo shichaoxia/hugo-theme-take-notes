@@ -3,19 +3,13 @@
 
 name = "Hugo Theme Take Notes"
 license = "MIT"
-licenselink = "https://github.com/yourname/yourtheme/blob/master/LICENSE"
-description = ""
-homepage = "http://example.com/"
+licenselink = "https://github.com/shichaoxia/hugo-theme-take-notes/blob/main/LICENSE"
+description = "A Hugo theme that focuses on taking notes and writing posts."
+homepage = "https://github.com/shichaoxia/hugo-theme-take-notes"
 tags = []
 features = []
 min_version = "0.41.0"
 
 [author]
-  name = ""
-  homepage = ""
-
-# If porting an existing theme
-[original]
-  name = ""
-  homepage = ""
-  repo = ""
+  name = "Shichao Xia"
+  homepage = "https://github.com/shichaoxia"
