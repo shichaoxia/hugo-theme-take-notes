@@ -1,0 +1,6 @@
+{{ with .Parent }}
+    {{ partial "loop-ancestor" . }}
+    {{ if ne .Title "Home" }}
+        <span> ▸ </span><a href="{{ .Permalink }}" class="hover:underline">{{ .Title }}</a>
+    {{ end }}
+{{ end }}

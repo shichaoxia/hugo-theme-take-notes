@@ -1,0 +1,29 @@
+<nav class="bg-gray-900">
+    <div class="mx-auto max-w-5xl p-4 text-gray-50
+    flex flex-wrap items-center justify-between ">
+        <div class="flex items-center gap-2">
+            <h1>
+                <a href="/">
+                    <i class="fa-solid fa-heart"></i>
+                    <i class="fa-solid fa-skull"></i>
+                    <i class="fa-solid fa-code"></i>
+                </a>
+            </h1>
+            {{ partial "breadcrumb.html" . }}
+        </div>
+        <div class="flex gap-6">
+            {{ if eq .Title "Home" }}
+            {{ range .Site.Menus.main }}
+            <div>
+                <a href="{{ .URL }}" class="hover:underline">{{ .Name | upper }}</a>
+            </div>
+            {{ end }}
+            {{ end }}
+            <div>
+                <p>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </p>
+            </div>
+        </div>
+    </div>
+</nav>

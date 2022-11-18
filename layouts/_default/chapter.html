@@ -1,0 +1,55 @@
+{{ define "main" }}
+<main class="grid grid-cols-1 md:grid-cols-5">
+    <aside class="h-fit py-2 md:h-screen md:sticky md:top-0 md:overflow-y-scroll md:overscroll-y-contain">
+        <div class="flex flex-col mx-4">
+            <p class="text-sm">CHAPTER</p>
+            {{ $currentPage := . }}
+            {{ range .CurrentSection.Pages }}
+            {{ if eq $currentPage.File.UniqueID .File.UniqueID }}
+            <a href="{{ .Permalink }}"
+               class="text-sm pl-2 border-l-2 text-sky-700 border-sky-700 font-medium">{{ .Title }}</a>
+            {{ else }}
+            <a href="{{ .Permalink }}"
+               class="text-sm pl-2 border-l-2 text-gray-500 border-gray-100 hover:border-gray-900 hover:text-gray-900">{{
+                .Title }}</a>
+            {{ end }}
+            {{ end }}
+        </div>
+    </aside>
+    <article id="content" class="p-4 grid-start-2 col-span-3 prose prose-pre:text-current">
+        {{ .Content }}
+        {{ with .Resources.GetMatch "legacy.org" }}
+        <hr>
+        <p>LEGACY ORG CONTENT</p>
+        {{ .Content }}
+        {{ end }}
+    </article>
+    <aside class="h-fit py-2 md:h-screen md:sticky md:top-0 md:overflow-y-scroll md:overscroll-y-contain">
+        <p class="text-sm">ON THIS PAGE</p>
+        {{ .TableOfContents }}
+    </aside>
+</main>
+<script defer>
+    window.addEventListener('DOMContentLoaded', () => {
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                const id = entry.target.getAttribute('id');
+                if (entry.intersectionRatio > 0) {
+                    document.querySelector(`nav li a[href="#${id}"]`).parentElement.classList.add('active');
+                } else {
+                    document.querySelector(`nav li a[href="#${id}"]`).parentElement.classList.remove('active');
+                }
+            });
+        });
+
+        document.querySelectorAll('h2[id]').forEach((heading) => {
+            observer.observe(heading);
+        });
+
+        document.querySelectorAll('h3[id]').forEach((heading) => {
+            observer.observe(heading);
+        });
+    });
+</script>
+{{ end }}

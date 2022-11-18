@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    /*TOC*/
+    #TableOfContents a {
+        @apply text-sm block transition pl-2 border-l-2 text-gray-500 border-gray-100;
+    }
+
+    #TableOfContents a:hover,
+    #TableOfContents a:focus {
+        @apply text-gray-900 border-gray-900;
+    }
+
+    #TableOfContents li li {
+        @apply pl-4;
+    }
+
+    #TableOfContents li.active > a {
+        @apply text-sky-700 border-sky-700 font-medium;
+    }
+    /*TOC*/
+
+    #content h2 a,
+    #content h3 a,
+    #content h4 a {
+        @apply no-underline;
+    }
+
+    #content h2,
+    #content h3,
+    #content h4 {
+        @apply relative before:content-['#'] before:absolute before:-left-5 before:text-gray-300;
+    }
+}

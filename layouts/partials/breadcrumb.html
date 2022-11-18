@@ -1,0 +1,4 @@
+{{ partial "loop-ancestor" . }}
+{{ if ne .Title "Home" }}
+    <span> ▸ </span><span>{{ .Title }}</span>
+{{ end }}

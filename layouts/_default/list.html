@@ -1,0 +1,17 @@
+{{ define "main" }}
+<main>
+    {{ partial "prose.html" . }}
+    <article class="max-w-3xl mx-auto p-4">
+        <section>
+            <ul>
+                {{ range .Pages.ByDate }}
+                <li class="my-4 text-gray-700 flex gap-4 items-baseline">
+                    <time>{{ .Date.Format "2006-01-02" }}</time>
+                    <h1 class="text-lg"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
+                </li>
+                {{ end }}
+            </ul>
+        </section>
+    </article>
+</main>
+{{ end }}
